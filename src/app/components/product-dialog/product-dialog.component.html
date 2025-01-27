@@ -1,0 +1,42 @@
+<h2 mat-dialog-title>
+  {{ isEditMode ? "Редактировать продукт" : "Добавить продукт" }}
+</h2>
+
+<mat-dialog-content class="dialog-content">
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>ID</mat-label>
+    <input matInput [(ngModel)]="product.id" placeholder="Введите ID" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Название</mat-label>
+    <input matInput [(ngModel)]="product.name" placeholder="Введите название" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Количество</mat-label>
+    <input
+      matInput
+      type="number"
+      [(ngModel)]="product.quantity"
+      placeholder="Введите количество"
+    />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Цена</mat-label>
+    <input
+      matInput
+      type="number"
+      [(ngModel)]="product.unitCost"
+      placeholder="Введите цену"
+    />
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onNoClick()">Отмена</button>
+  <button mat-button (click)="saveProduct()" cdkFocusInitial>
+    {{ isEditMode ? "Сохранить" : "Добавить" }}
+  </button>
+</mat-dialog-actions>

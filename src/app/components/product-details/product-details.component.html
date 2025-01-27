@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>
+  {{ isEditMode ? "Редактировать продукт" : "Добавить продукт" }}
+</h1>
+
+<div mat-dialog-content>
+  <!-- Режим редактирования -->
+  <div *ngIf="isEditMode; else viewMode">
+    <mat-form-field>
+      <mat-label>Название</mat-label>
+      <input matInput [(ngModel)]="product.name" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Количество</mat-label>
+      <input matInput [(ngModel)]="product.quantity" type="number" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Цена</mat-label>
+      <input matInput [(ngModel)]="product.unitCost" type="number" />
+    </mat-form-field>
+  </div>
+
+  <!-- Режим просмотра -->
+  <ng-template #viewMode>
+    <p><strong>Название:</strong> {{ product.name }}</p>
+    <p><strong>Количество:</strong> {{ product.quantity }}</p>
+    <p><strong>Цена:</strong> {{ product.unitCost }}</p>
+  </ng-template>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Закрыть</button>
+  <button mat-button *ngIf="isEditMode" (click)="onSave()">Сохранить</button>
+</div>
