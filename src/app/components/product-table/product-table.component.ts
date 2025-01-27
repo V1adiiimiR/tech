@@ -69,17 +69,18 @@ export class ProductTableComponent implements OnInit {
 
   openViewProductDialog(product: any): void {
     this.openDialog(product, false); 
+  }
 
-  // Открытие окна для редактирования продукта
+  
   openEditProductDialog(product: any): void {
     this.openDialog(product, true); 
   }
 
-  // Универсальный метод для открытия модального окна
+  
   openDialog(product: any, isEditMode: boolean = false): void {
     const dialogRef = this.dialog.open(ProductDetailsComponent, {
       width: '250px',
-      data: { product, isEditMode }, // Передаем продукт и флаг режима
+      data: { product, isEditMode }, 
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -94,7 +95,7 @@ export class ProductTableComponent implements OnInit {
     });
   }
 
-  // Удаление продукта
+  
   deleteProduct(product: any): void {
     this.productService.deleteProduct(product.id).subscribe(() => {
       this.products = this.products.filter((p) => p.id !== product.id);
